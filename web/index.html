@@ -17,6 +17,11 @@ and open the template in the editor.
         <div class="container">
             <h1>Student Profile</h1>
             
+            <!-- Navigation to View All Profiles -->
+            <div style="margin-bottom: 20px;">
+                <a href="ProfileServlet?action=view" class="btn btn-secondary" style="font-size: 1rem; padding: 10px;">VIEW ALL PROFILES</a>
+            </div>
+
             <!-- Form submits to 'ProfileServlet' using POST method -->
             <form action="ProfileServlet" method="POST">
                 
@@ -47,7 +52,7 @@ and open the template in the editor.
 
                 <div class="form-group">
                     <label for="hobbies">Hobbies:</label>
-                    <input type="text" id="hobbies" name="hobbies" placeholder="Ex: Gaming, Reading, Coding">
+                    <input type="text" id="hobbies" name="hobbies" placeholder="Ex: Gaming, Reading, Coding" required>
                 </div>
 
                 <div class="form-group">

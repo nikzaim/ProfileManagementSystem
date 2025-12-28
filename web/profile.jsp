@@ -4,6 +4,7 @@
     Author     : nikza
 --%>
 
+<%@page import="com.profile.ProfileBean"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,6 +14,10 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
+        <%
+            // Fetch the bean from the request attribute
+            ProfileBean profile = (ProfileBean) request.getAttribute("savedProfile");
+        %>
         <div class="container">
             <h1>Success!</h1>
             <p style="text-align:center;">The following profile has been saved to the database.</p>
@@ -47,13 +52,20 @@
                     <strong>Hobbies:</strong>
                     <span>${savedProfile.hobbies}</span>
                 </div>
-
-                <div class="result-item" style="border-bottom: none;">
-                    <strong>Introduction:</strong>
-                    <p style="background: #e0e0ff; padding: 10px; border: 3px solid black; margin-top: 5px;">
-                        ${savedProfile.introduction}
-                    </p>
-                </div>
+                
+                <% 
+                    // Use a standard Java IF statement to check if the introduction is provided
+                    if (profile != null && profile.getIntroduction() != null && !profile.getIntroduction().trim().isEmpty()) { 
+                %>
+                    <div class="result-item" style="border-bottom: none;">
+                        <strong>Introduction:</strong>
+                        <p style="background: #e0e0ff; padding: 10px; border: 3px solid black; margin-top: 5px;">
+                            ${savedProfile.introduction}
+                        </p>
+                    </div>
+                <% 
+                    } 
+                %>
             </div>
 
             <br>

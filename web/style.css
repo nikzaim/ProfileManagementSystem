@@ -155,6 +155,19 @@ button:active {
     background-color: #00E5FF; /* Cyan */
 }
 
+/* Action Buttons (Edit/Delete) in Table */
+.action-btn {
+    text-decoration: none;
+    padding: 5px 10px;
+    font-weight: bold;
+    border: 2px solid black;
+    font-size: 0.8rem;
+    margin-right: 5px;
+    display: inline-block;
+}
+.edit-btn { background-color: #FFC900; color: black; }
+.del-btn { background-color: #ff4d4d; color: white; }
+
 /* Table Styling */
 .table-wrapper {
     overflow-x: auto;
@@ -165,6 +178,7 @@ button:active {
 table {
     width: 100%;
     border-collapse: collapse;
+    border: none;
     min-width: 600px;
 }
 
@@ -182,7 +196,23 @@ td {
 
 tr:hover { background-color: #f9f9f9; }
 
-/* Search Box */
+/* Search and Filter Container */
+.tools-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+    background: #fff;
+    border: 3px solid black;
+    padding: 15px;
+    box-shadow: 4px 4px 0px 0px black;
+}
+
+.tool-group { 
+    flex-grow: 1; 
+}
+
+/* Search Box specific overrides */
 .search-box {
     display: flex;
     gap: 10px;

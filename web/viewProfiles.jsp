@@ -14,63 +14,92 @@
         <title>All Profiles</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="style.css">
+        <script>
+            function confirmDelete(id) {
+                if (confirm("Are you sure you want to delete this profile?")) {
+                    window.location.href = "ProfileServlet?action=delete&id=" + id;
+                }
+            }
+        </script>
+        
     </head>
     <body>
         <div class="container">
-            <h1>Database Records</h1>
+            <h1>Manage Profiles</h1>
 
-            <!-- UNIQUE FEATURE: SEARCH BAR -->
-            <!-- Submitting this form sends a GET request to ProfileServlet -->
-            <!-- The Servlet will check for the 'search' parameter to filter results -->
-            <form action="ProfileServlet" method="GET" class="search-box">
-                <input type="text" name="search" placeholder="Search by Name or ID...">
-                <button type="submit">Search</button>
-            </form>
+            <div class="tools-container">
+                <!-- FEATURE 1: SEARCH -->
+                <div class="tool-group">
+                    <form action="ProfileServlet" method="GET">
+                        <input type="hidden" name="action" value="search">
+                        <label>Search:</label>
+                        <div style="display:flex; gap:5px;">
+                            <input type="text" name="search" placeholder="Name">
+                            <button type="submit" style="padding:5px; font-size:14px;">Go</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- FEATURE 2: FILTER -->
+                <div class="tool-group">
+                    <form action="ProfileServlet" method="GET">
+                        <input type="hidden" name="action" value="filter">
+                        <label>Filter by Program:</label>
+                        <div style="display:flex; gap:5px;">
+                            <select name="program">
+                                <option value="All">All Programs</option>
+                                <option value="Computer Science">Computer Science</option>
+                                <option value="Information Technology">Information Technology</option>
+                                <option value="Software Engineering">Software Engineering</option>
+                                <option value="Data Science">Data Science</option>
+                            </select>
+                            <button type="submit" style="padding:5px; font-size:14px;">Filter</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
             
             <div class="table-wrapper">
                 <table>
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Name</th>
-                            <th>Student ID</th>
+                            <th>ID</th>
                             <th>Program</th>
                             <th>Hobbies</th>
+                            <th>Actions</th> <!-- NEW COLUMN -->
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Java Logic to Display List -->
                         <%
-                            // Retrieve the list of profiles sent from the Servlet
                             List<ProfileBean> list = (List<ProfileBean>) request.getAttribute("profileList");
-                            
-                            // Check if list is not null and not empty
                             if (list != null && !list.isEmpty()) {
                                 for (ProfileBean p : list) {
                         %>
                         <tr>
-                            <td><%= p.getId() %></td>
                             <td><%= p.getName() %></td>
                             <td><%= p.getStudentId() %></td>
                             <td><%= p.getProgram() %></td>
                             <td><%= p.getHobbies() %></td>
+                            <td>
+                                <!-- FEATURE 3: EDIT -->
+                                <a href="ProfileServlet?action=edit&id=<%= p.getId() %>" class="action-btn edit-btn">Edit</a>
+                                
+                                <!-- FEATURE 4: DELETE -->
+                                <a href="javascript:void(0)" onclick="confirmDelete(<%= p.getId() %>)" class="action-btn del-btn">X</a>
+                            </td>
                         </tr>
                         <% 
                                 }
                             } else {
                         %>
-                        <tr>
-                            <td colspan="5" style="text-align:center; padding: 20px;">
-                                No profiles found.
-                            </td>
-                        </tr>
+                        <tr><td colspan="5" style="text-align:center;">No profiles found.</td></tr>
                         <% } %>
                     </tbody>
                 </table>
             </div>
 
             <br>
-            <!-- Navigation Button -->
             <a href="index.html" class="btn">Add New Profile</a>
         </div>
     </body>
