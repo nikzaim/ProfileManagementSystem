@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Create Profile</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>Student Profile</h1>
+            
+            <!-- Form submits to 'ProfileServlet' using POST method -->
+            <form action="ProfileServlet" method="POST">
+                
+                <div class="form-group">
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" name="userName" required placeholder="Ex: John Doe">
+                </div>
+
+                <div class="form-group">
+                    <label for="sid">Student ID:</label>
+                    <input type="text" id="sid" name="studentId" required placeholder="Ex: 2023001">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="userEmail" required placeholder="john@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="program">Program:</label>
+                    <select id="program" name="program">
+                        <option value="Computer Science">Computer Science</option>
+                        <option value="Information Technology">Information Technology</option>
+                        <option value="Software Engineering">Software Engineering</option>
+                        <option value="Data Science">Data Science</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="hobbies">Hobbies:</label>
+                    <input type="text" id="hobbies" name="hobbies" placeholder="Ex: Gaming, Reading, Coding">
+                </div>
+
+                <div class="form-group">
+                    <label for="intro">Self Introduction:</label>
+                    <textarea id="intro" name="introduction" rows="4" placeholder="Tell us about yourself..."></textarea>
+                </div>
+
+                <button type="submit">Generate Profile</button>
+            </form>
+        </div>
+    </body>
+</html>
