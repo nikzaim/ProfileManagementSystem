@@ -3,9 +3,8 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
-/* 
-    Created on : Nov 30, 2025, 3:27:06 PM
-    Author     : nikza
+/* Created on : Nov 30, 2025, 3:27:06 PM
+    Author      : nikza
 */
 
 * {
@@ -29,7 +28,7 @@ body {
     border: 3px solid #000;
     box-shadow: 5px 5px 0px 0px #000;
     width: 100%;
-    max-width: 500px;
+    max-width: 800px; /* Expanded for Assignment 2 Table */
     padding: 2rem;
     position: relative;
 }
@@ -125,3 +124,69 @@ button:active {
 .back-link:hover {
     background-color: #FFC900;
 }
+
+/* =========================================
+   ADDED FOR ASSIGNMENT 2 (Tables & Search)
+   ========================================= */
+
+/* Button utility class (used in JSPs) */
+.btn {
+    display: inline-block;
+    width: 100%;
+    padding: 15px;
+    font-family: inherit;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    background-color: #FF90E8; /* Hot Pink */
+    border: 3px solid #000;
+    box-shadow: 5px 5px 0px 0px #000;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.btn:active {
+    transform: translate(5px, 5px);
+    box-shadow: 0px 0px 0px 0px #000;
+}
+.btn-secondary {
+    background-color: #00E5FF; /* Cyan */
+}
+
+/* Table Styling */
+.table-wrapper {
+    overflow-x: auto;
+    margin-top: 20px;
+    border: 3px solid #000;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+th {
+    background-color: #00E5FF; /* Cyan */
+    border-bottom: 3px solid black;
+    padding: 15px;
+    text-align: left;
+}
+
+td {
+    padding: 12px;
+    border-bottom: 1px solid black;
+}
+
+tr:hover { background-color: #f9f9f9; }
+
+/* Search Box */
+.search-box {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.search-box input { flex-grow: 1; }
+.search-box button { width: auto; background-color: #00E5FF; }
